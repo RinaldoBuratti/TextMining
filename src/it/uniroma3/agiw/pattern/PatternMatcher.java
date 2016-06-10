@@ -13,7 +13,7 @@ public class PatternMatcher {
 		ArrayList<String> names = FileReader.getItalianNames();
 		/* Regole per il pattern matching */
 		HashMap<String,String> patterns = new HashMap<String,String>();
-		patterns.put("telephone", "([+]?[0-9]{2,4})?( )?[0-9]{2,4}(/|-| |.|)[0-9]{6,10}");
+		patterns.put("telephone", "([+]?[3|0][0-9]{1,3})?( )?[0-9]{2,4}(/|-| |.|)[0-9]{6,10}");
 		patterns.put("name", "[A-Z][a-z]+ [A-Z][a-z]+");
 		patterns.put("email", "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}");
 		
@@ -41,7 +41,7 @@ public class PatternMatcher {
 	};
 	
 	public static void main(String[] args) {
-		String s = "06 9077225 Luca Avolio 06 9077225 martina@gmail.com 06 9077225 Rinaldo Buratti luca@uniroma3.it";
+		String s = "06 9077225 Luca Avolio 06 9077225 Rinaldo Troia martina@gmail.com 06 9077225 Rinaldo Buratti luca@uniroma3.it";
 		System.out.println(match(s).toString());
 	}
 
