@@ -8,7 +8,7 @@ public class FolderReader {
 	        if (fileEntry.isDirectory()) {
 	            listFilesForFolder(fileEntry);
 	        } else {
-	            System.out.println(fileEntry.getName());
+	            DataReader.getDataFromJSON(fileEntry.getPath());
 	        }
 	    }
 	}

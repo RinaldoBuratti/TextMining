@@ -1,30 +1,27 @@
 package it.uniroma3.agiw.main;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import it.uniroma3.reader.FolderReader;
+
 public class URLGetRankedNamedEntities {
 
-	static String Api_key="59306558c68b0b4813cb84735f5cf657e361daf6";
-	static String Url="https://it.wikipedia.org/wiki/Lorenzo_Valentini";
-
-
-	public URLGetRankedNamedEntities(String url) {
-		this.Url=url;
-	}
+	static String Api_key="ENTER API KEY HERE";
+	static File Folder = new File("ENTER PATH HERE");
 
 	public static void main(String[] argc) {
-		getEntitiesToJsonString();
+		FolderReader.listFilesForFolder(Folder);
 	}
 
 
-	public static String getEntitiesToJsonString() {
+	public static String getEntitiesToJsonString(String url) {
 
 		String API_KEY = Api_key;
-		String url = Url;
 		String StringJson="";
 
 		try{
