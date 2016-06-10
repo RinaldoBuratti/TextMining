@@ -13,3 +13,6 @@ public class FolderReader {
 	    }
 	}
 }
+
+/*final File folder = new File("/home/you/Desktop");
+listFilesForFolder(folder);*/
