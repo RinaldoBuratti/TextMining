@@ -1,4 +1,4 @@
-package it.uniroma3.pattern;
+package it.uniroma3.agiw.pattern;
 
 import java.util.ArrayList;
 import java.util.HashMap;

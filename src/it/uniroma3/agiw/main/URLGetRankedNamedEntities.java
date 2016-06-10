@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-import it.uniroma3.reader.FolderReader;
+import it.uniroma3.agiw.reader.FolderReader;
 
 public class URLGetRankedNamedEntities {
 
