@@ -20,35 +20,6 @@ public class JsonCreator {
 	JSONArray tel;				//Lista di telefoni per il campo tel del PATTERN
 	JSONArray name;				//Lista di nomi per il campo name del PATTERN	
 	
-	public void JsnCreator(){
-		obj.put("url", "ciao");							//URL dell'oggetto Json
-		obj.put("NER", ner);
-		obj.put("PATTERN", pattern);
-		
-		//Definizione oggetto NER;
-		ner.put("PER", per);
-		ner.put("ORG", org);
-		ner.put("LOC", loc);
-		
-		//Definizione oggetto PATTERN
-		pattern.put("email", mail);
-		pattern.put("tel", tel);
-		pattern.put("name", name);
-		
-		//Aggiorno dati del NER
-		per.add("Luca Avolio");
-		org.add("FCA");
-		loc.add("Roma");
-		
-		//Aggiorno dati del PATTERN
-		mail.add("luc.avolio@uniroma.it");
-		mail.add("1@yahoo.it");
-		tel.add("333");
-		name.add("Luca Avolio");
-		
-		System.out.println(obj.toJSONString());
-	}
-	
 	public JsonCreator(String url) {
 		this.obj = new JSONObject();
 		this.ner = new JSONObject();
