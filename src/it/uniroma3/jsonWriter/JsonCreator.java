@@ -150,7 +150,7 @@ public class JsonCreator {
 		return true;
 	}
 	
-	/* Prova*/
+	/* Prova
 	public static void main(String[] args){
 		JsonCreator json = new JsonCreator();
 		ArrayList<String> per = new ArrayList<String>();
@@ -175,5 +175,5 @@ public class JsonCreator {
 		json.pushIntoPATTERN(email, tel, names);
 		System.out.println(json.toString());
 		json.write("docs/1.json");
-	}
+	} */
 }
