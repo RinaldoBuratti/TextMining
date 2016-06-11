@@ -49,7 +49,7 @@ public class JsonCreator {
 		System.out.println(obj.toJSONString());
 	}
 	
-	public JsonCreator() {
+	public JsonCreator(String url) {
 		this.obj = new JSONObject();
 		this.ner = new JSONObject();
 		this.pattern = new JSONObject();
@@ -61,6 +61,7 @@ public class JsonCreator {
 		this.name = new JSONArray();
 		this.obj.put("NER", ner);
 		this.obj.put("PATTERN", pattern);
+		this.obj.put("url", url);
 		
 		//Definizione oggetto NER;
 		this.ner.put("PER", this.per);
@@ -145,6 +146,7 @@ public class JsonCreator {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 		
 		return true;
@@ -152,7 +154,7 @@ public class JsonCreator {
 	
 	/* Prova
 	public static void main(String[] args){
-		JsonCreator json = new JsonCreator();
+		JsonCreator json = new JsonCreator("www.google.it");
 		ArrayList<String> per = new ArrayList<String>();
 		ArrayList<String> org = new ArrayList<String>();
 		ArrayList<String> loc = new ArrayList<String>();
