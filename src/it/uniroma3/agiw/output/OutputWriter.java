@@ -23,15 +23,16 @@ public class OutputWriter {
 		ArrayList<String> location = new ArrayList<String>();
 		ArrayList<String> organization = new ArrayList<String>();
 		for(int i = 0; i < entities.length(); i++) {
-			if(entities.get(i) == "Person") {
-				JSONObject temp = entities.getJSONObject(i);
-				people.add(temp.getString("text"));
-			}else if(entities.get(i) == "City" || entities.get(i) == "Country") {
-				JSONObject temp = entities.getJSONObject(i);
-				location.add(temp.getString("text"));
-			}else if(entities.get(i) == "Organization") {
-				JSONObject temp = entities.getJSONObject(i);
-				organization.add(temp.getString("text"));
+			JSONObject temp = entities.getJSONObject(i);
+			if(temp.getString("type").equals("Person")) {
+				JSONObject temp2 = entities.getJSONObject(i);
+				people.add(temp2.getString("text"));
+			}else if(temp.getString("type").equals("City") || temp.getString("type").equals("Country")) {
+				JSONObject temp2 = entities.getJSONObject(i);
+				location.add(temp2.getString("text"));
+			}else if(temp.getString("type").equals("Organization")) {
+				JSONObject temp2 = entities.getJSONObject(i);
+				organization.add(temp2.getString("text"));
 			}
 		}
 			
@@ -39,6 +40,14 @@ public class OutputWriter {
 		ArrayList<String> email = new ArrayList<String>();
 		ArrayList<String> tel = new ArrayList<String>();
 		ArrayList<String> names = new ArrayList<String>();
+		for(String s : information2data.get("email")) {
+			email.add(s);
+		}
+		for(String s : information2data.get("telephone")) {
+			tel.add(s);
+		}for(String s : information2data.get("name")) {
+			names.add(s);
+		}
 		
 		jc.pushIntoNER(people, organization, location);	
 		jc.pushIntoPATTERN(email, tel, names);
