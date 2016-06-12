@@ -149,6 +149,8 @@ public class JsonCreator {
 		json.pushIntoNER(per, org, loc);
 		json.pushIntoPATTERN(email, tel, names);
 		System.out.println(json.toString());
+		
+		//PER CREARE IL FILE
 		String path = PathMaker.createPath("adorno_corradini1.json");
 		json.write(path);
 	} */
