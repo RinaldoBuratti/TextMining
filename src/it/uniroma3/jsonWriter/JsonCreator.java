@@ -8,6 +8,8 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import it.uniroma3.agiw.path.PathMaker;
+
 public class JsonCreator {
 	JSONObject obj;
 	JSONObject ner;				//NER
@@ -123,7 +125,7 @@ public class JsonCreator {
 		return true;
 	}
 	
-	/* Prova
+	/*
 	public static void main(String[] args){
 		JsonCreator json = new JsonCreator("www.google.it");
 		ArrayList<String> per = new ArrayList<String>();
@@ -147,6 +149,7 @@ public class JsonCreator {
 		json.pushIntoNER(per, org, loc);
 		json.pushIntoPATTERN(email, tel, names);
 		System.out.println(json.toString());
-		json.write("docs/1.json");
-	} */
+		String path = PathMaker.createPath("adorno_corradini1.json");
+		json.write(path);
+	}*/
 }
