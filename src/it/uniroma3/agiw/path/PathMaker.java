@@ -28,7 +28,7 @@ public class PathMaker {
 		return path;
 	}
 	
-	public static String createFileName(String fileName) {
+	private static String createFileName(String fileName) {
 		
 		return fileName.substring(fileName.indexOf(".")-1);
 	}

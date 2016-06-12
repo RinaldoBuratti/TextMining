@@ -125,7 +125,7 @@ public class JsonCreator {
 		return true;
 	}
 	
-	/*
+	/* Prova
 	public static void main(String[] args){
 		JsonCreator json = new JsonCreator("www.google.it");
 		ArrayList<String> per = new ArrayList<String>();
@@ -151,5 +151,5 @@ public class JsonCreator {
 		System.out.println(json.toString());
 		String path = PathMaker.createPath("adorno_corradini1.json");
 		json.write(path);
-	}*/
+	} */
 }
