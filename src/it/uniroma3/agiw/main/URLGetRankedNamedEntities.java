@@ -11,8 +11,8 @@ import it.uniroma3.agiw.reader.FolderReader;
 
 public class URLGetRankedNamedEntities {
 
-	static String Api_key="79c17c64ac450515e4ed5bac0c48e613046f8236";
-	static File Folder = new File("/Volumes/My Passport/Rinaldo/");
+	static String Api_key="ENTER API KEY HERE";
+	static File Folder = new File("ENTER PATH HERE");
 
 	public static void main(String[] argc) {
 		FolderReader.listFilesForFolder(Folder);
