@@ -125,7 +125,7 @@ public class JsonCreator {
 		return true;
 	}
 	
-	/* Prova
+	/*
 	public static void main(String[] args){
 		JsonCreator json = new JsonCreator("www.google.it");
 		ArrayList<String> per = new ArrayList<String>();
@@ -151,7 +151,7 @@ public class JsonCreator {
 		System.out.println(json.toString());
 		
 		//PER CREARE IL FILE
-		String path = PathMaker.createPath("adorno_corradini1.json");
+		String path = PathMaker.createPath("ciccio_pasticcio200.json");
 		json.write(path);
-	} */
+	}*/
 }

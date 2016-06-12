@@ -2,6 +2,7 @@ package it.uniroma3.agiw.path;
 
 import java.io.File;
 import java.nio.file.*;
+import java.util.Arrays;
 
 import it.uniroma3.jsonWriter.JsonCreator;
 
@@ -12,7 +13,7 @@ public class PathMaker {
 		boolean success;
 		
 		/* Verifica se la directory del nome già esiste, se non esiste al crea */
-		String dir = fileName.substring(0,fileName.indexOf(".")-1);
+		String dir = fileName.replace(getNumber(fileName)+".json", "");
 		path = "docs/"+dir;
 		File f = new File(path);
 		if (!f.exists()) {
@@ -30,6 +31,16 @@ public class PathMaker {
 	
 	private static String createFileName(String fileName) {
 		
-		return fileName.substring(fileName.indexOf(".")-1);
+		return getNumber(fileName)+".json";
+	}
+	
+	private static String getNumber(String fileName) {   
+		String str = fileName.replaceAll("[^-?0-9]+", ""); 
+		return str;
+	}
+	
+	public static void main(String[] args){
+		String s = "adorno_corradini300.json";
+		System.out.println(createPath(s));
 	}
 }
