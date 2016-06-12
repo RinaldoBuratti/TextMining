@@ -40,6 +40,14 @@ public class OutputWriter {
 		ArrayList<String> email = new ArrayList<String>();
 		ArrayList<String> tel = new ArrayList<String>();
 		ArrayList<String> names = new ArrayList<String>();
+		for(String s : information2data.get("email")) {
+			email.add(s);
+		}
+		for(String s : information2data.get("telephone")) {
+			tel.add(s);
+		}for(String s : information2data.get("name")) {
+			names.add(s);
+		}
 		
 		jc.pushIntoNER(people, organization, location);	
 		jc.pushIntoPATTERN(email, tel, names);
