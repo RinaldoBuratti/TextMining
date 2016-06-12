@@ -24,7 +24,6 @@ public class OutputWriter {
 		ArrayList<String> organization = new ArrayList<String>();
 		for(int i = 0; i < entities.length(); i++) {
 			JSONObject temp = entities.getJSONObject(i);
-			System.out.println(temp.getString("type"));
 			if(temp.getString("type").equals("Person")) {
 				JSONObject temp2 = entities.getJSONObject(i);
 				people.add(temp2.getString("text"));
