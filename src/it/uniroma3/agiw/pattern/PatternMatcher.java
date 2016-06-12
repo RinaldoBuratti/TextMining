@@ -39,11 +39,4 @@ public class PatternMatcher {
 		
 		return result;
 	};
-	
-	public static void main(String[] args) {
-		String s = " 06 9077225 Luca Avolio +39 332 28690664867 0039 0035-56565656 Rinaldo Troia martina@gmail.com 06 9077225 Rinaldo Buratti luca@uniroma3.it";
-		System.out.println(match(s).toString());
-	}
-
-
 }
