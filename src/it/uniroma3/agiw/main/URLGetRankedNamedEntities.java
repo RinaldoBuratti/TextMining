@@ -41,6 +41,7 @@ public class URLGetRankedNamedEntities {
 
 			StringJson= StringBuilderJson.toString();
 		}catch(Exception e){
+			e.printStackTrace();
 		}
 		System.out.println(StringJson.toString());
 		return StringJson;
