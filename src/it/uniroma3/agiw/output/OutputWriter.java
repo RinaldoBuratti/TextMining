@@ -42,14 +42,17 @@ public class OutputWriter {
 		ArrayList<String> tel = new ArrayList<String>();
 		ArrayList<String> names = new ArrayList<String>();
 		for(String s : information2data.get("email")) {
-			email.add(s);
+			if(email.contains(s))
+				email.add(s);
 		}
 		for(String s : information2data.get("telephone")) {
-			tel.add(s);
+			if(!tel.contains(s))
+				tel.add(s);
 		}for(String s : information2data.get("name")) {
-			names.add(s);
+			if(!names.contains(s))
+				names.add(s);
 		}
-
+		
 		jc.pushIntoNER(people, organization, location);	
 		jc.pushIntoPATTERN(email, tel, names);
 		jc.write(outputPath);

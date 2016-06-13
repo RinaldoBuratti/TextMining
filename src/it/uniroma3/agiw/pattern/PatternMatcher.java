@@ -27,6 +27,7 @@ public class PatternMatcher {
 			while (m.find()) {
 				if(s.equals("name")) {						//controlla che il nome sia italiano
 					String first = m.group().split(" ")[0];	//dalla oppia nome-cognome recupera solo il nome
+					first = first.toLowerCase();
 					if(names.contains(first)) {				// verifica se il nome � nella lista dei nomi italaiani
 						tmp.add(m.group());
 					}

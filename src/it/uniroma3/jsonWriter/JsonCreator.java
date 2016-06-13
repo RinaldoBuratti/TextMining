@@ -101,12 +101,12 @@ public class JsonCreator {
 
 	/* Inserisco i valori nel NER */
 	public boolean pushIntoNER(ArrayList<String> per, ArrayList<String> org, ArrayList<String> loc) {
-		return this.putPERInNER(per) && this.putORGInNER(org) && this.putLOCInNER(loc);
+		return this.putPERInNER(per) || this.putORGInNER(org) || this.putLOCInNER(loc);
 	}
 
 	/* Inserisco i valori nel PATTERN */
 	public boolean pushIntoPATTERN(ArrayList<String> email, ArrayList<String> tel, ArrayList<String> names) {
-		return this.putEMAILInPattern(email) && this.putTELInPattern(tel) && this.putNAMEInPattern(names);
+		return this.putEMAILInPattern(email) || this.putTELInPattern(tel) || this.putNAMEInPattern(names);
 	}
 
 	/* Scrive il JSON in un file */
