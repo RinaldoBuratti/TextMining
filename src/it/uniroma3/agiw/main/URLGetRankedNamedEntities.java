@@ -11,7 +11,7 @@ import it.uniroma3.agiw.reader.FolderReader;
 
 public class URLGetRankedNamedEntities {
 
-	static String Api_key="ENTER API KEY HERE";
+	static String Api_key = "ENTER API KEY HERE";
 	static File Folder = new File("ENTER PATH HERE");
 
 	public static void main(String[] argc) {
@@ -26,7 +26,6 @@ public class URLGetRankedNamedEntities {
 
 		try{
 			URL urlObj = new URL("http://access.alchemyapi.com/calls/url/URLGetRankedNamedEntities?apikey=" + API_KEY + "&url="+ url +"&outputMode=json");
-			//System.out.println(urlObj.toString() + "\n");
 
 			URLConnection connection = urlObj.openConnection();
 			connection.connect();
@@ -43,7 +42,6 @@ public class URLGetRankedNamedEntities {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		System.out.println(StringJson.toString());
 		return StringJson;
 
 	}

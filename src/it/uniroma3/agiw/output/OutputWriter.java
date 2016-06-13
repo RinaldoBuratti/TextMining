@@ -8,13 +8,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import it.uniroma3.agiw.main.URLGetRankedNamedEntities;
+import it.uniroma3.agiw.path.PathMaker;
 import it.uniroma3.agiw.pattern.PatternMatcher;
 import it.uniroma3.jsonWriter.JsonCreator;
 
 public class OutputWriter {
-	
-	public static void writeJSON(String url, String html) throws JSONException {
-		
+
+	public static void writeJSON(String url, String html, String outputPath) throws JSONException {
+
 		JsonCreator jc = new JsonCreator(url);
 		String jsonString = URLGetRankedNamedEntities.getEntitiesToJsonString(url);
 		JSONObject jsonOutput = new JSONObject(jsonString);
@@ -35,7 +36,7 @@ public class OutputWriter {
 				organization.add(temp2.getString("text"));
 			}
 		}
-			
+
 		HashMap<String, ArrayList<String>> information2data = PatternMatcher.match(html);
 		ArrayList<String> email = new ArrayList<String>();
 		ArrayList<String> tel = new ArrayList<String>();
@@ -48,11 +49,9 @@ public class OutputWriter {
 		}for(String s : information2data.get("name")) {
 			names.add(s);
 		}
-		
+
 		jc.pushIntoNER(people, organization, location);	
 		jc.pushIntoPATTERN(email, tel, names);
-		System.out.println(information2data.toString());
-		System.out.println("--");
-		
+		jc.write(outputPath);
 	}
 }

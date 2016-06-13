@@ -16,27 +16,27 @@ public class PatternMatcher {
 		patterns.put("telephone", "( )(([+][3][9])|([0][0][3][9]))?( )?[3|0][0-9]{1,3}(/|-| |.|)[0-9]{6,10}");
 		patterns.put("name", "[A-Z][a-z]+ [A-Z][a-z]+");
 		patterns.put("email", "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}");
-		
+
 		/* Applico ogni regola al documento */
 		for(String s: patterns.keySet()) {
 			ArrayList<String> tmp = new ArrayList<String>();
 			String regex = patterns.get(s);
 			Pattern p = Pattern.compile(regex);
 			Matcher m = p.matcher(doc);
-			
+
 			while (m.find()) {
 				if(s.equals("name")) {						//controlla che il nome sia italiano
 					String first = m.group().split(" ")[0];	//dalla oppia nome-cognome recupera solo il nome
-					if(names.contains(first)) {				// verifica se il nome è nella lista dei nomi italaiani
+					if(names.contains(first)) {				// verifica se il nome ï¿½ nella lista dei nomi italaiani
 						tmp.add(m.group());
 					}
 				}					
 				else 
-				tmp.add(m.group());
+					tmp.add(m.group());
 			}
 			result.put(s, tmp);
 		}
-		
+
 		return result;
 	};
 }

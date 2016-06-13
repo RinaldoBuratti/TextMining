@@ -11,8 +11,8 @@ public class PathMaker {
 	public static String createPath(String fileName) {
 		String path;
 		boolean success;
-		
-		/* Verifica se la directory del nome già esiste, se non esiste al crea */
+
+		/* Verifica se la directory del nome giï¿½ esiste, se non esiste al crea */
 		String dir = fileName.replace(getNumber(fileName)+".json", "");
 		path = "docs/"+dir;
 		File f = new File(path);
@@ -28,19 +28,14 @@ public class PathMaker {
 		path += "/"+ createFileName(fileName);
 		return path;
 	}
-	
+
 	private static String createFileName(String fileName) {
-		
+
 		return getNumber(fileName)+".json";
 	}
-	
+
 	private static String getNumber(String fileName) {   
 		String str = fileName.replaceAll("[^-?0-9]+", ""); 
 		return str;
-	}
-	
-	public static void main(String[] args){
-		String s = "adorno_corradini300.json";
-		System.out.println(createPath(s));
 	}
 }
