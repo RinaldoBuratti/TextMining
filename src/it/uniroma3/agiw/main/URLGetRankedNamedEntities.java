@@ -9,8 +9,8 @@ import it.uniroma3.agiw.reader.FolderReader;
 
 public class URLGetRankedNamedEntities {
 
-	static String Api_key = "ENTER API KEY HERE";
-	static File Folder = new File("ENTER PATH HERE");
+	static String Api_key = "API_KEY";
+	static File Folder = new File("PATH");
 
 	public static void main(String[] argc) {
 		FolderReader.listFilesForFolder(Folder);
