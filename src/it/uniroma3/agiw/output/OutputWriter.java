@@ -30,7 +30,7 @@ public class OutputWriter {
 				ner2data.put(temp.getString("type"), tempList);
 			}
 			else {
-				ner2data.get("type").add(temp.getString("text"));
+				ner2data.get(temp.getString("type")).add(temp.getString("text"));
 			}
 		}
 		
