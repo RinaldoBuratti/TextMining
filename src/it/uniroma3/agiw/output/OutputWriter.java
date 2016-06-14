@@ -19,21 +19,33 @@ public class OutputWriter {
 		String jsonString = URLGetRankedNamedEntities.getEntitiesToJsonString(url);
 		JSONObject jsonOutput = new JSONObject(jsonString);
 		JSONArray entities = jsonOutput.getJSONArray("entities");
-		
+
 		/*salva i dati contenuti nel json in una mappa*/
 		HashMap<String, ArrayList<String>> ner2data = new HashMap<String, ArrayList<String>>();
+		ner2data.put("PER", new ArrayList<String>());
+		ner2data.put("LOC", new ArrayList<String>());
+		ner2data.put("ORG", new ArrayList<String>());
+		ner2data.put("MONEY", new ArrayList<String>());
+		ner2data.put("MISC", new ArrayList<String>());
+		ner2data.put("DATE", new ArrayList<String>());
+		ner2data.put("TIME", new ArrayList<String>());
 		for(int i = 0; i < entities.length(); i++) {
 			JSONObject temp = entities.getJSONObject(i);
-			if(!ner2data.containsKey(temp.get("type"))){
-				ArrayList<String> tempList = new ArrayList<String>();
-				tempList.add(temp.getString("text"));
-				ner2data.put(temp.getString("type"), tempList);
-			}
-			else {
-				ner2data.get(temp.getString("type")).add(temp.getString("text"));
-			}
+			String category = temp.getString("type");
+			if(category.equals("City") || category.equals("Continent") || category.equals("Country") || category.equals("Region") || category.equals("StateOrCounty")){
+				ner2data.get("LOC").add(temp.getString("text"));
+			}else if(category.equals("Company") || category.equals("Organization")){
+				ner2data.get("ORG").add(temp.getString("text"));
+			}else if(category.equals("Person")) {
+				ner2data.get("PER").add(temp.getString("text"));
+			}else if(category.equals("Money")) {
+				ner2data.get("MONEY").add(temp.getString("text"));
+			}else if(category.equals("Anniversary")) {
+				ner2data.get("DATE").add(temp.getString("text"));
+			}else
+				ner2data.get("MISC").add(temp.getString("text"));		
 		}
-		
+
 		/*salva i dati ritornati dal pattern matching in 3 liste*/
 		HashMap<String, ArrayList<String>> information2data = PatternMatcher.match(html);
 		ArrayList<String> email = new ArrayList<String>();
@@ -50,8 +62,8 @@ public class OutputWriter {
 			if(!names.contains(s))
 				names.add(s);
 		}
-		
-		
+
+
 		jc.pushMapIntoNER(ner2data);	
 		jc.pushIntoPATTERN(email, tel, names);
 		jc.write(outputPath);
