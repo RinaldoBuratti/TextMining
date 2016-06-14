@@ -1,10 +1,6 @@
 package it.uniroma3.agiw.path;
 
 import java.io.File;
-import java.nio.file.*;
-import java.util.Arrays;
-
-import it.uniroma3.jsonWriter.JsonCreator;
 
 public class PathMaker {
 
@@ -12,7 +8,7 @@ public class PathMaker {
 		String path;
 		boolean success;
 
-		/* Verifica se la directory del nome gi� esiste, se non esiste al crea */
+		/* Verifica se la directory del nome gia' esiste, se non esiste la crea */
 		String dir = fileName.replace(getNumber(fileName)+".json", "");
 		path = "docs/"+dir;
 		File f = new File(path);

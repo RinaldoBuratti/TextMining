@@ -8,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import it.uniroma3.agiw.main.URLGetRankedNamedEntities;
-import it.uniroma3.agiw.path.PathMaker;
 import it.uniroma3.agiw.pattern.PatternMatcher;
 import it.uniroma3.jsonWriter.JsonCreator;
 
@@ -20,23 +19,22 @@ public class OutputWriter {
 		String jsonString = URLGetRankedNamedEntities.getEntitiesToJsonString(url);
 		JSONObject jsonOutput = new JSONObject(jsonString);
 		JSONArray entities = jsonOutput.getJSONArray("entities");
-		ArrayList<String> people = new ArrayList<String>();
-		ArrayList<String> location = new ArrayList<String>();
-		ArrayList<String> organization = new ArrayList<String>();
+		
+		/*salva i dati contenuti nel json in una mappa*/
+		HashMap<String, ArrayList<String>> ner2data = new HashMap<String, ArrayList<String>>();
 		for(int i = 0; i < entities.length(); i++) {
 			JSONObject temp = entities.getJSONObject(i);
-			if(temp.getString("type").equals("Person")) {
-				JSONObject temp2 = entities.getJSONObject(i);
-				people.add(temp2.getString("text"));
-			}else if(temp.getString("type").equals("City") || temp.getString("type").equals("Country")) {
-				JSONObject temp2 = entities.getJSONObject(i);
-				location.add(temp2.getString("text"));
-			}else if(temp.getString("type").equals("Organization")) {
-				JSONObject temp2 = entities.getJSONObject(i);
-				organization.add(temp2.getString("text"));
+			if(!ner2data.containsKey(temp.get("type"))){
+				ArrayList<String> tempList = new ArrayList<String>();
+				tempList.add(temp.getString("text"));
+				ner2data.put(temp.getString("type"), tempList);
+			}
+			else {
+				ner2data.get("type").add(temp.getString("text"));
 			}
 		}
-
+		
+		/*salva i dati ritornati dal pattern matching in 3 liste*/
 		HashMap<String, ArrayList<String>> information2data = PatternMatcher.match(html);
 		ArrayList<String> email = new ArrayList<String>();
 		ArrayList<String> tel = new ArrayList<String>();
@@ -53,7 +51,8 @@ public class OutputWriter {
 				names.add(s);
 		}
 		
-		jc.pushIntoNER(people, organization, location);	
+		
+		jc.pushMapIntoNER(ner2data);	
 		jc.pushIntoPATTERN(email, tel, names);
 		jc.write(outputPath);
 	}

@@ -2,17 +2,15 @@ package it.uniroma3.agiw.main;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-
 import it.uniroma3.agiw.reader.FolderReader;
 
 public class URLGetRankedNamedEntities {
 
-	static String Api_key = "ENTER API KEY HERE";
-	static File Folder = new File("ENTER PATH HERE");
+	static String Api_key = "79c17c64ac450515e4ed5bac0c48e613046f8236";
+	static File Folder = new File("/Volumes/My Passport/Rinaldo/");
 
 	public static void main(String[] argc) {
 		FolderReader.listFilesForFolder(Folder);
@@ -44,6 +42,5 @@ public class URLGetRankedNamedEntities {
 		}
 		return StringJson;
 
-	}
-
+	}	
 }
